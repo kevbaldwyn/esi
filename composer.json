@@ -1,0 +1,29 @@
+{
+    "name": "kevbaldwyn/esi",
+    "description": "Simple ESI (Edge Side Include) writer helper",
+    "keywords": [ "esi", "edge side include", "include", "varnish", "akamai", "template", "cache" ],
+    "authors": [
+        {
+            "name": "Kevin Baldwyn",
+            "email": "kevin@purepixel.co.uk"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.3"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "mockery/mockery":"dev-master"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "KevBaldwyn\\Esi":"src/"
+        },
+        "classmap": [
+            "src"
+        ]
+    }
+}
