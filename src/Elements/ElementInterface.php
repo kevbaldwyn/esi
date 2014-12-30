@@ -9,4 +9,6 @@ interface ElementInterface {
     public function content();
 
     public function hasClosingTag();
+
+    public function render($tagString);
 } 

@@ -14,7 +14,7 @@ class WriterTest extends PHPUnit_Framework_TestCase {
         $el->shouldReceive('attributes')->andReturn('');
         $writer = new Writer($el);
 
-        $this->assertSame('<esi:name  />', $writer->render());
+        $this->assertSame('<esi:name  />', $writer->getTagString());
     }
 
     public function testRenderWithClosingTag()
@@ -25,7 +25,7 @@ class WriterTest extends PHPUnit_Framework_TestCase {
         $el->shouldReceive('attributes')->andReturn('');
         $writer = new Writer($el);
 
-        $this->assertSame('<esi:name  ></esi:name>', $writer->render());
+        $this->assertSame('<esi:name  ></esi:name>', $writer->getTagString());
     }
 
     static public function getElementMock()

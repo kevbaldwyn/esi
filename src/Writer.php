@@ -3,28 +3,34 @@
 class Writer {
 
     private $element;
+    private $string;
 
     public function __construct(Elements\ElementInterface $el)
     {
         $this->element = $el;
     }
 
+    public function getTagString()
+    {
+        $this->string = '<esi:' . $this->element->getTagName() . ' ';
+        $this->string .= trim($this->element->attributes());
+        if($this->element->hasClosingTag()) {
+            $this->string .= ' >';
+        }
+
+        $this->string .= $this->element->content();
+
+        if($this->element->hasClosingTag()) {
+            $this->string .= '</esi:' . $this->element->getTagName() . '>';
+        }else{
+            $this->string .= ' />';
+        }
+
+        return $this->string;
+    }
+
     public function render()
     {
-        $str = '<esi:' . $this->element->getTagName() . ' ';
-        $str .= trim($this->element->attributes());
-        if($this->element->hasClosingTag()) {
-            $str .= ' >';
-        }
-
-        $str .= $this->element->content();
-
-        if($this->element->hasClosingTag()) {
-            $str .= '</esi:' . $this->element->getTagName() . '>';
-        }else{
-            $str .= ' />';
-        }
-
-        return $str;
+        return $this->element->render($this->string);
     }
 } 
